@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.sound.midi.Soundbank;
 import java.util.List;
 
+/**
+ *
+ */
 @Controller
 @RequestMapping("/stu")
 public class StudentController {
