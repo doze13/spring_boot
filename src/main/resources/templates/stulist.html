@@ -13,7 +13,7 @@
             <td>birthday</td>
             <td>操作</td>
         </tr>
-        <tr th:each="stu : ${stus}">
+        <tr th:each="stu : ${pages.list}">
             <td th:text="${stu.id}"></td>
             <td th:text="${stu.name}"></td>
             <td th:text="${stu.age}"></td>
@@ -21,6 +21,14 @@
             <td><a th:href="|/stu/deleteStudent/${stu.id}|">删除</a></td>
         </tr>
     </table>
-
+    <div>
+        <a th:unless="${pages.isFirstPage}">首页</a>
+        <a th:unless="${pages.isFirstPage}"
+           th:href="@{/stu/listStudent(start=${pages.hasPreviousPage}?${pages.prePage}:1)}">上一页</a>
+        <a th:unless="${pages.isLastPage}"
+            th:href="@{/stu/listStudent(start=${pages.hasNextPage}?${pages.nextPage}:${pages.pages})}">下一页</a>
+        <a th:unless="${pages.isLastPage}"
+           th:href="@{/stu/listStudent(start=${pages.pages})}">尾页</a>
+    </div>
 </body>
 </html>

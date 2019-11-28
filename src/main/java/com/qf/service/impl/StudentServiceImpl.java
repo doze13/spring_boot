@@ -8,14 +8,18 @@ import com.sun.org.apache.xpath.internal.operations.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> implements IStudentService {
 
-/*    @Autowired
+    @Autowired
     private StudentMapper studentMapper;
 
     @Override
-    public void addStudent(Student student) {
-        studentMapper.addStudent(student);
-    }*/
+    public List<Student> getStudent() {
+        return studentMapper.getStudent();
+    }
+
+
 }

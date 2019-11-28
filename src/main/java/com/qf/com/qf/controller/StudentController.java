@@ -1,5 +1,7 @@
 package com.qf.com.qf.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.qf.entity.Student;
 import com.qf.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +25,15 @@ public class StudentController {
     @Autowired
     public IStudentService studentService;
 
-    @RequestMapping("/selectStudent")
-    public String selectStudent(Model model,@RequestParam(value="pageNum") String pageNum){
+    @RequestMapping("/stu/listStudent")
+    public String selectStudent(Model model,
+                                @RequestParam(value = "start",defaultValue = "")int start,
+                                @RequestParam(value = "size",defaultValue = "")int size){
+        PageHelper.startPage(start,size);
 
-        List<Student> stus = studentService.list();
-        model.addAttribute("stus",stus);
+        List<Student> stus = studentService.getStudent();
+        PageInfo<Student> page = new PageInfo<>(stus);
+        model.addAttribute("pages",page);
         return "stulist";
     }
 

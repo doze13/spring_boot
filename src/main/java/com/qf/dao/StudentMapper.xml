@@ -3,7 +3,7 @@
 <mapper namespace="com.qf.dao.StudentMapper">
 
 
-    <insert id="addStudent">
-        insert into student () values (null,#{name},#{age},now())
-    </insert>
+<!--    <insert id="addStudent">-->
+<!--        insert into student () values (null,#{name},#{age},now())-->
+<!--    </insert>-->
 </mapper>
